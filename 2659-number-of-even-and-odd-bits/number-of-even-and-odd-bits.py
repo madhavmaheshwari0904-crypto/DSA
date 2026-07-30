@@ -4,8 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: List[int]
         """
-        s=str(bin(n))[2:]
-        s=s[::-1]
+        s=bin(n)[2:][::-1]
         e=0
         o=0
         for i in range(len(s)):
