@@ -4,11 +4,19 @@ class Solution(object):
         :type word: str
         :rtype: int
         """
-        fre=Counter(word)
-        l=sorted(fre.values(),reverse=True)
-        print(l)
-        ans=0
-        for i,j in enumerate(l):
-            f=(i//8)+1
-            ans+=f*j
-        return ans    
+        fre=dict()
+        for i in set(word):
+            c=word.count(i)
+            fre[i]=c
+        ans=sorted(fre.items(),key=lambda x:x[1],reverse=True)   
+        res=0
+        for i in range(len(ans)):
+            if i>23:
+                res+=4*ans[i][1]
+            elif i>15:
+                res+=3*ans[i][1]
+            elif i>7:
+                res+=2*ans[i][1]
+            else:
+                res+=ans[i][1]
+        return res                   
