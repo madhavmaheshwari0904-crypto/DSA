@@ -17,9 +17,10 @@ class Solution(object):
         :rtype: List[int]
         """
         ans=self.arr[:]
-        for i in range(len(ans)):
+        """for i in range(len(ans)):
             swap=random.randrange(i,len(ans))
-            ans[i],ans[swap]=ans[swap],ans[i]
+            ans[i],ans[swap]=ans[swap],ans[i]"""
+        random.shuffle(ans)
         return ans    
 
 
