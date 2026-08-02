@@ -4,7 +4,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n==1:
+        """if n==1:
             return 0
         if n==2:
             return 1    
@@ -13,4 +13,5 @@ class Solution(object):
         a=3
         for i in range(3,n):
             a+=i
-        return a         
+        return a  """
+        return (n*(n-1))//2       
