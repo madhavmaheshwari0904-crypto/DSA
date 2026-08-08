@@ -5,15 +5,10 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        if len(cardPoints)==k:
-            return sum(cardPoints)
-        t=sum(cardPoints)
+        s=sum(cardPoints[:k])
+        m=s
         n=len(cardPoints)
-        r=n-k
-        sub=sum(cardPoints[:r])
-        m=sub
-        for i in range(r,n):
-            sub+=cardPoints[i]
-            sub-=cardPoints[i-r]
-            m=min(m,sub)
-        return t-m    
+        for i in range(1,k+1):
+            s=s-cardPoints[k-i]+cardPoints[n-i]
+            m=s if s>m else m
+        return m    
