@@ -9,8 +9,7 @@ class Solution(object):
         while(i<len(nums) and nums[i-1]+1==nums[i]):
             s+=nums[i]
             i+=1
-        while True:
-            if(s not in nums):
-                return s
-            s+=1    
+        while s in nums :
+            s+=1
+        return s        
 
