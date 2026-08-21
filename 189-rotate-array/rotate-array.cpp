@@ -4,9 +4,9 @@ public:
         int l=0;
         int n=nums.size();
         int h=n-1;
-        if(n<(k%n)){
+        /*if(n<(k%n)){
             return;
-        }
+        }*/
         while(l<h){
             nums[l]=nums[l]^nums[h];
             nums[h]=nums[l]^nums[h];
