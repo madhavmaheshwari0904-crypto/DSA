@@ -5,7 +5,8 @@ class Solution(object):
         :rtype: int
         """
         tasks.sort(key=lambda x:x[1])
-        time=[False]*20001
+        maxi=max(task[1] for task in tasks)
+        time=[False]*(maxi+1)
         for s,e,d in tasks:
             already=sum(time[s:e+1])
             left=d-already
