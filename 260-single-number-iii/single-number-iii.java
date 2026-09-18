@@ -5,7 +5,7 @@ class Solution {
         for(int i:nums){
             ans^=i;
         }
-        int diff=ans &(-ans);
+        int diff=(ans & ans-1)^ans;
         for(int i:nums){
             if ((i & diff)!=0)n1^=i;
             else n2^=i;
