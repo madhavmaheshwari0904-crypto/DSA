@@ -17,7 +17,7 @@ class Solution(object):
             return ""
         pre=0
         suf=0
-        base=30
+        base=26
         power=1
         mod=10**9+7
         for i,c in enumerate(s):
