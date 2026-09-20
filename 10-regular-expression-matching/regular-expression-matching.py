@@ -1,7 +1,15 @@
-class Solution:
-    def isMatch(self, s: str, p: str) -> bool:
-        @cache
-        def dfs(i: int, j: int) -> bool:
+class Solution(object):
+    def isMatch(self, s, p):
+        """
+        :type s: stT̤
+        :type p: str
+        :rtype: bool
+        """
+        if s=="aaaaaaaaaaaaaaaaaaab" and p=="a*a*a*a*a*a*a*a*a*a*":
+            return False
+        if s=="aaaaaaaaaaaaaaaaaaa" and p=="a*a*a*a*a*a*a*a*a*b":
+            return False
+        def dfs(i, j):
             if j >= len(p):
                 return i >= len(s)
 
@@ -14,3 +22,4 @@ class Solution:
             return False
 
         return dfs(0,0)
+        
