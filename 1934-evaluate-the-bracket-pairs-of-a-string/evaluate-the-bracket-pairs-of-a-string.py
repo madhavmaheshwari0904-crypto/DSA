@@ -5,7 +5,7 @@ class Solution(object):
         :type knowledge: List[List[str]]
         :rtype: str
         """
-        d={key:value for key,value in knowledge}
+        d=dict(knowledge)
         ans=[]
         i=0
         while(i<len(s)):
