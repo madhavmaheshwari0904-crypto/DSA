@@ -13,7 +13,7 @@ class Solution(object):
             mid=(l+r)//2
             s=0
             for i in piles:
-                s+=math.ceil(float(i)/mid)
+                s+=(i+mid-1)//mid
             if s<=h:
                 ans=mid
                 r=mid-1
