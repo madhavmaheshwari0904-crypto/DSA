@@ -21,7 +21,7 @@ class Solution(object):
             y=l2.val if l2 is not None else 0
             s=x+y+c
             d=s%10
-            c=s/10
+            c=s//10
             newNode=ListNode(d)
             temp.next=newNode
             temp=temp.next
