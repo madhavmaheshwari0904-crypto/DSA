@@ -44,5 +44,5 @@ class Solution(object):
                 prev.next=kthNode
             temp.next=newNode
             prev=temp
-            temp=newNode
+            temp=temp.next
         return head
