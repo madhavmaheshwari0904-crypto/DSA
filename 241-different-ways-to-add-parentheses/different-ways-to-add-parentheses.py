@@ -2,6 +2,8 @@ class Solution(object):
     def solve(self,s):
         if s.isdigit():
             return [int(s)]
+        if s in self.dp:
+            return self.dp[s]
         ans=[]
         for i in range(len(s)):
             if s[i] in ["+","-","*"]:
@@ -12,6 +14,7 @@ class Solution(object):
                         if s[i]=="+":ans.append(j+k)
                         if s[i]=="-":ans.append(j-k)
                         if s[i]=="*":ans.append(j*k)
+        self.dp[s]=ans
         return ans
 
     def diffWaysToCompute(self, expression):
@@ -19,4 +22,5 @@ class Solution(object):
         :type expression: str
         :rtype: List[int]
         """
+        self.dp={}
         return self.solve(expression)
