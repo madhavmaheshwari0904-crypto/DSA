@@ -27,12 +27,12 @@ class Solution(object):
             l*=2
             if l>=k:
                 break
-        print(op)
+        #print(op)
         c=0
         for i in op[-1::-1]:
             l//=2
             if l<k:
                 k-=l
                 c+=i
-        print(c)
+        #print(c)
         return chr(ord("a")+(c%26))
