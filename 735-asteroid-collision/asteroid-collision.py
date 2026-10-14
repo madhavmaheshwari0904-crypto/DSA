@@ -7,12 +7,12 @@ class Solution(object):
         s=[]
         for i in ast:
             while s and s[-1]>0 and i<0:
-                if s[-1]+i<0:s.pop()
-                elif s[-1]+i>0:
-                    break
-                else:
+                if s[-1]+i<0:
                     s.pop()
-                    break
+                    continue
+                if s[-1]+i==0:
+                    s.pop()
+                break
 
             else:s.append(i)
         return s
