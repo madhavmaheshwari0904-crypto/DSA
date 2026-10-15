@@ -10,12 +10,13 @@ class Solution(object):
         dy=[0,0,1,-1]
         m=len(grid)
         n=len(grid[0])
-        dq=deque([(0,0,k,0)])
+        dq=[(0,0,k,0)]
         if k>=n+m-2:
             return n+m-2
         vis=set([(0,0,k)])
         while dq:
-            i,j,rem,step=dq.popleft()
+            i,j,rem,step=dq[0]
+            dq.pop(0)
             if i == m - 1 and j == n - 1:
                 return step
             for l in range(4):
