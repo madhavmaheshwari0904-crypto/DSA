@@ -1,25 +1,15 @@
-class Solution(object):
-    def largestRectangleArea(self, heights):
-        """
-        :type heights: List[int]
-        :rtype: int
-        """
-        n=len(heights)
-        left,right=[-1]*n,[n]*n
-        s=[]
-        for i in range(n):
-            while s and heights[s[-1]]>=heights[i]:
-                s.pop()
-            left[i]=s[-1] if s else -1
+class Solution:
+    def largestRectangleArea(self, h: list[int]) -> int:
+        h.append(0)
+        ans=0
+        s=[-1]
+        for i in range(len(h)):
+            while s and h[i]<h[s[-1]]:
+                l=h[s.pop()]
+                #print(l)
+                w=i-s[-1]-1
+                #print(w)
+                ans=max(ans,l*w)
+                #print(ans)
             s.append(i)
-        s=[]
-        for i in range(n-1,-1,-1):
-            while s and heights[s[-1]]>=heights[i]:
-                s.pop()
-            right[i]=s[-1] if s else n
-            s.append(i)
-        maxi=0
-        for i in range(n):
-            w=right[i]-left[i]-1
-            maxi=max(maxi,heights[i]*w)
-        return maxi
+        return ans
