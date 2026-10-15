@@ -13,5 +13,6 @@ class Solution(object):
             s.append(i)
         if k>0:
             s=s[:-k]
+            print(s)
         ans="".join(s).lstrip("0")
         return ans if ans else "0"
