@@ -21,7 +21,7 @@ class Solution(object):
         nodes.sort()
         #print(nodes)
         ans=[]
-        prev=float('-inf')
+        prev=float('inf')
         for col,row,val in nodes:
             if col !=prev:
                 ans.append([])
