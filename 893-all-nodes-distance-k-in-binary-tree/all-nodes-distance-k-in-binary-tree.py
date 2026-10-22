@@ -1,47 +1,30 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
 #         self.right = None
 
-class Solution(object):
-    def distanceK(self, root, target, k):
-        """
-        :type root: TreeNode
-        :type target: TreeNode
-        :type k: int
-        :rtype: List[int]
-        """
+class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+        def parent(node,par):
+            if node is None:
+                return
+            d[node]=par
+            parent(node.left,node)
+            parent(node.right,node)
+        def solve(node,dis):
+            if not node or node in vis or dis>k:
+                return 
+            vis.add(node)
+            if dis==k:
+                ans.append(node.val)
+            solve(node.left,dis+1)
+            solve(node.right,dis+1)
+            solve(d[node],dis+1)
         d={}
-        d[root]=None
-        q=[root]
-        while q:
-            #size=len(q)
-            l=[]
-            for node in q:
-                if node.left:
-                    d[node.left]=node
-                    l.append(node.left)
-                if node.right:
-                    d[node.right]=node
-                    l.append(node.right)
-            q=l
-        #print(d)
         vis=set()
         ans=[]
-        queue=deque([(target,0)])
-        while(queue):
-            node,dis=queue.popleft()
-            if node not in vis:
-                if dis==k:
-                    ans.append(node.val)
-                    continue
-                vis.add(node)
-                if node.left:
-                    queue.append((node.left,dis+1))
-                if node.right:
-                    queue.append((node.right,dis+1))
-                if d[node]:queue.append((d[node],dis+1))
+        parent(root,None)
+        solve(target,0)
         return ans
-            
