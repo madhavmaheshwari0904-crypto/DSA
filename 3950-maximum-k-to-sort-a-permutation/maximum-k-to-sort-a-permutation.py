@@ -1,11 +1,7 @@
-class Solution(object):
-    def sortPermutation(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+class Solution:
+    def sortPermutation(self, nums: List[int]) -> int:
         k=-1
-        for i,val in enumerate(nums):
-            if i!=val:
-                k&=i
-        return 0 if k==-1 else k
+        for i in range(len(nums)):
+            if nums[i]!=i:
+                k=nums[i] if k==-1 else k&nums[i]
+        return max(k,0)
