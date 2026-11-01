@@ -5,4 +5,4 @@ class Solution(object):
         :rtype: int
         """
         min_=min(nums)
-        return sum(i-min_ for i in nums)
+        return sum(nums)-min_*len(nums)
