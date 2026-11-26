@@ -14,7 +14,7 @@ class Solution(object):
         for l in edges:
             adj_list[l[0]].append(l[1])
             adj_list[l[1]].append(l[0])
-        print(adj_list)
+        #print(adj_list)
         #apply bfs
         visted=[False]*len(adj_list)
         q=deque([source])
