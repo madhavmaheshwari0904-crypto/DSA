@@ -1,5 +1,5 @@
 class Solution(object):
-    def validPath(self, n, edges, source, destination):
+    def validPath(self, n, edges, x, y):
         """
         :type n: int
         :type edges: List[List[int]]
@@ -7,28 +7,22 @@ class Solution(object):
         :type destination: int
         :rtype: bool
         """
-        #creat adj_list
-        adj_list=[]
-        for _ in range(n):
-            adj_list.append([])
-        for l in edges:
-            adj_list[l[0]].append(l[1])
-            adj_list[l[1]].append(l[0])
-        #print(adj_list)
-        #apply bfs
-        visted=[False]*len(adj_list)
-        q=deque([source])
-        visted[source]=True
-        ans=[0]*len(adj_list)
+        adj = [[] for _ in range(n + 1)]
+        for u, v in edges:
+            adj[u].append(v)
+            adj[v].append(u)
+
+        dist = [-1] * (n + 1)
+        dist[x] = 0
+        q = deque([x])
+
         while q:
-            u=q.popleft()
-            if u==destination:
-                print(ans[destination]+1)
+            u = q.popleft()
+            if u == y:
                 return True
-            for v in adj_list[u]:
-                if not visted[v]:
+            for v in adj[u]:
+                if dist[v] == -1:
+                    dist[v] = dist[u] + 1
                     q.append(v)
-                    visted[v]=True
-                    ans[v]+=1
-        print(ans[destination])
+
         return False
