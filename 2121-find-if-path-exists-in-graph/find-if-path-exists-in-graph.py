@@ -19,12 +19,16 @@ class Solution(object):
         visted=[False]*len(adj_list)
         q=deque([source])
         visted[source]=True
+        ans=[0]*len(adj_list)
         while q:
             u=q.popleft()
             if u==destination:
+                print(ans[destination]+1)
                 return True
             for v in adj_list[u]:
                 if not visted[v]:
                     q.append(v)
                     visted[v]=True
+                    ans[v]+=1
+        print(ans[destination])
         return False
